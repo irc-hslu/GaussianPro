@@ -1,0 +1,17 @@
+services:
+  gaussian-pro:
+    image: irchslu/gaussian-pro
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./data:/data
+      
+
